@@ -1,103 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FootLive Analytics</title>
-    <link rel="stylesheet" href="../assets/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FootLive Analytics</title>
+
+  <link rel="stylesheet" href="../assets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <iframe
-  id="youtubePlayer"
-  width="100%"
-  height="315"
-  src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID"
-  frameborder="0"
-  allowfullscreen>
-</iframe>
+
+<header>
+  <h1>FootLive Analytics</h1>
+  <p>Análise de desempenho ao vivo via YouTube</p>
+</header>
+
+<!-- PLAYER DO YOUTUBE -->
 <div class="container">
-    <h2>Controles de Eventos</h2>
-
-    <div class="dashboard">
-
-        <!-- TIME A -->
-        <div class="card time-a">
-            <h3>🔵 Time A</h3>
-            <div class="controls">
-                <button data-event="goal" data-team="A">⚽ Gol</button>
-                <button data-event="shot" data-team="A">🎯 Finalização</button>
-                <button data-event="foul" data-team="A">❌ Falta</button>
-                <button data-event="yellow" data-team="A">🟨 Amarelo</button>
-                <button data-event="red" data-team="A">🟥 Vermelho</button>
-                <button data-event="corner" data-team="A">🚩 Escanteio</button>
-                <button data-event="cross" data-team="A">🔁 Cruzamento</button>
-                <button data-event="set_piece_corner" data-team="A">🧠 Jogada Ensaiada</button>
-                <button data-event="goal_kick" data-team="A">🥅 Tiro de Meta</button>
-            </div>
-        </div>
-
-        <!-- TIME B -->
-        <div class="card time-b">
-            <h3>🔴 Time B</h3>
-            <div class="controls">
-                <button data-event="goal" data-team="B">⚽ Gol</button>
-                <button data-event="shot" data-team="B">🎯 Finalização</button>
-                <button data-event="foul" data-team="B">❌ Falta</button>
-                <button data-event="yellow" data-team="B">🟨 Amarelo</button>
-                <button data-event="red" data-team="B">🟥 Vermelho</button>
-                <button data-event="corner" data-team="B">🚩 Escanteio</button>
-                <button data-event="cross" data-team="B">🔁 Cruzamento</button>
-                <button data-event="set_piece_corner" data-team="B">🧠 Jogada Ensaiada</button>
-                <button data-event="goal_kick" data-team="B">🥅 Tiro de Meta</button>
-            </div>
-        </div>
-
-    </div>
+  <div class="card">
+    <h3>Vídeo do Jogo</h3>
+    <iframe
+      id="youtubePlayer"
+      width="100%"
+      height="315"
+      src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
 </div>
-    <header>
-        <h1>FootLive Analytics</h1>
-    </header>
 
-    <div class="container">
-        <h2>Dashboard do Jogo</h2>
+<!-- CONTROLES -->
+<div class="container">
+  <h2>Controles de Eventos</h2>
 
-        <!-- Player do YouTube -->
-        <div class="card" style="text-align:center;">
-            <h3>Vídeo do Jogo</h3>
-            <iframe id="youtubePlayer" width="100%" height="315" 
-                src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID" 
-                title="YouTube video player" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-        </div>
+  <div class="dashboard">
 
-        <!-- Dashboard com cards principais -->
-        <div class="dashboard">
-            <div class="card">
-                <h3>Heatmap do time/jogador</h3>
-                <p>Confira o heatmap abaixo</p>
-            </div>
-            <div class="card">
-                <h3>Gráfico de Passes</h3>
-                <canvas id="passesChart"></canvas>
-            </div>
-            <div class="card">
-                <h3>Linha do tempo</h3>
-                <p>Eventos do jogo aparecem abaixo</p>
-            </div>
-            <div class="card">
-                <h3>Estatísticas rápidas</h3>
-                <p>Chutes, escanteios, faltas, posse de bola</p>
-            </div>
-        </div>
+    <div class="card time-a">
+      <h3>🔵 Time A</h3>
+      <div class="controls">
+        <button data-event="goal" data-team="A">⚽ Gol</button>
+        <button data-event="shot" data-team="A">🎯 Finalização</button>
+        <button data-event="foul" data-team="A">❌ Falta</button>
+        <button data-event="yellow" data-team="A">🟨 Amarelo</button>
+        <button data-event="red" data-team="A">🟥 Vermelho</button>
+        <button data-event="corner" data-team="A">🚩 Escanteio</button>
+        <button data-event="cross" data-team="A">🔁 Cruzamento</button>
+        <button data-event="set_piece_corner" data-team="A">🧠 Jogada Ensaiada</button>
+        <button data-event="goal_kick" data-team="A">🥅 Tiro de Meta</button>
+      </div>
     </div>
 
-    <!-- Containers para heatmap, eventos e estatísticas -->
-    <div id="heatmapContainer" class="container"></div>
-    <div id="eventContainer" class="container"></div>
-    <div id="statsContainer" class="container"></div>
+    <div class="card time-b">
+      <h3>🔴 Time B</h3>
+      <div class="controls">
+        <button data-event="goal" data-team="B">⚽ Gol</button>
+        <button data-event="shot" data-team="B">🎯 Finalização</button>
+        <button data-event="foul" data-team="B">❌ Falta</button>
+        <button data-event="yellow" data-team="B">🟨 Amarelo</button>
+        <button data-event="red" data-team="B">🟥 Vermelho</button>
+        <button data-event="corner" data-team="B">🚩 Escanteio</button>
+        <button data-event="cross" data-team="B">🔁 Cruzamento</button>
+        <button data-event="set_piece_corner" data-team="B">🧠 Jogada Ensaiada</button>
+        <button data-event="goal_kick" data-team="B">🥅 Tiro de Meta</button>
+      </div>
+    </div>
 
-    <script src="../assets/script.js"></script>
+  </div>
+</div>
+
+<!-- EVENTOS -->
+<div id="eventContainer" class="container"></div>
+
+<script src="../assets/script.js"></script>
 </body>
 </html>
