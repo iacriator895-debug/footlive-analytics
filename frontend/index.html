@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FootLive Analytics</title>
     <link rel="stylesheet" href="../assets/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <iframe
+  id="youtubePlayer"
+  width="100%"
+  height="315"
+  src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+<div class="container">
+    <h2>Controles de Eventos</h2>
+
+    <div class="dashboard">
+
+        <!-- TIME A -->
+        <div class="card time-a">
+            <h3>🔵 Time A</h3>
+            <div class="controls">
+                <button data-event="goal" data-team="A">⚽ Gol</button>
+                <button data-event="shot" data-team="A">🎯 Finalização</button>
+                <button data-event="foul" data-team="A">❌ Falta</button>
+                <button data-event="yellow" data-team="A">🟨 Amarelo</button>
+                <button data-event="red" data-team="A">🟥 Vermelho</button>
+                <button data-event="corner" data-team="A">🚩 Escanteio</button>
+                <button data-event="cross" data-team="A">🔁 Cruzamento</button>
+                <button data-event="set_piece_corner" data-team="A">🧠 Jogada Ensaiada</button>
+                <button data-event="goal_kick" data-team="A">🥅 Tiro de Meta</button>
+            </div>
+        </div>
+
+        <!-- TIME B -->
+        <div class="card time-b">
+            <h3>🔴 Time B</h3>
+            <div class="controls">
+                <button data-event="goal" data-team="B">⚽ Gol</button>
+                <button data-event="shot" data-team="B">🎯 Finalização</button>
+                <button data-event="foul" data-team="B">❌ Falta</button>
+                <button data-event="yellow" data-team="B">🟨 Amarelo</button>
+                <button data-event="red" data-team="B">🟥 Vermelho</button>
+                <button data-event="corner" data-team="B">🚩 Escanteio</button>
+                <button data-event="cross" data-team="B">🔁 Cruzamento</button>
+                <button data-event="set_piece_corner" data-team="B">🧠 Jogada Ensaiada</button>
+                <button data-event="goal_kick" data-team="B">🥅 Tiro de Meta</button>
+            </div>
+        </div>
+
+    </div>
+</div>
     <header>
         <h1>FootLive Analytics</h1>
     </header>
