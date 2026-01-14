@@ -110,3 +110,40 @@ iframe {
         height: 220px;
     }
 }
+/* CONTROLES DE EVENTOS */
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.controls button {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.time-a {
+    border-left: 6px solid #1E90FF;
+}
+
+.time-b {
+    border-left: 6px solid #FF3B3B;
+}
+
+.time-a button {
+    background-color: #1E90FF;
+    color: #fff;
+}
+
+.time-b button {
+    background-color: #FF3B3B;
+    color: #fff;
+}
+
+.controls button:active {
+    transform: scale(0.96);
+}
