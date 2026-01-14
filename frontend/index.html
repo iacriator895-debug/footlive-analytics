@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>FootLive Analytics</title>
+    <meta charset="UTF-8">
+    <title>FootLive Analytics</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <h1>Bem-vindo ao FootLive Analytics</h1>
-  <p>Site de análise de desempenho de futebol ao vivo via YouTube.</p>
+    <header>
+        <h1>FootLive Analytics</h1>
+    </header>
+
+    <div class="container">
+        <h2>Dashboard do Jogo</h2>
+        <div class="dashboard">
+            <div class="card">
+                <h3>Heatmap do time/jogador</h3>
+                <p>Em breve será implementado</p>
+            </div>
+            <div class="card">
+                <h3>Gráfico de Passes</h3>
+                <canvas id="passesChart"></canvas>
+            </div>
+            <div class="card">
+                <h3>Linha do tempo</h3>
+                <p>Eventos do jogo aparecerão aqui</p>
+            </div>
+            <div class="card">
+                <h3>Estatísticas rápidas</h3>
+                <p>Chutes, escanteios, faltas, posse de bola</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/script.js"></script>
 </body>
 </html>
