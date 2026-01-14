@@ -1,121 +1,60 @@
-// Inicializa tudo quando a página carrega
-window.onload = function() {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0A1F44;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
 
-    // ----------------------------
-    // 1️⃣ Gráfico de Passes
-    // ----------------------------
-    const ctx = document.getElementById('passesChart').getContext('2d');
-    const passesChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Jogador 1', 'Jogador 2', 'Jogador 3', 'Jogador 4', 'Jogador 5'],
-            datasets: [{
-                label: 'Passes certos',
-                data: [12, 19, 7, 14, 10],
-                backgroundColor: '#FFA500'
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { display: false }
-            }
-        }
-    });
+header {
+    background-color: #1F3F77;
+    padding: 15px;
+    text-align: center;
+}
 
-    // ----------------------------
-    // 2️⃣ Simulação de Eventos do Jogo
-    // ----------------------------
-    const events = [
-        { time: 5, text: "Gol do Jogador 1" },
-        { time: 10, text: "Falta no Jogador 2" },
-        { time: 15, text: "Escanteio para o Time B" },
-        { time: 20, text: "Cartão amarelo Jogador 3" },
-        { time: 25, text: "Chute perigoso do Jogador 4" }
-    ];
+header h1 {
+    color: #FFA500;
+}
 
-    let currentEvent = 0;
-    const eventContainer = document.createElement('div');
-    eventContainer.id = 'eventContainer';
-    eventContainer.style.margin = '20px';
-    document.body.appendChild(eventContainer);
+.container {
+    padding: 20px;
+}
 
-    const interval = setInterval(() => {
-        if(currentEvent < events.length) {
-            const event = events[currentEvent];
-            const div = document.createElement('div');
-            div.className = 'card';
-            div.style.backgroundColor = '#FFA500';
-            div.style.color = '#0A1F44';
-            div.style.marginBottom = '10px';
-            div.textContent = `⏱ ${event.time}' - ${event.text}`;
-            eventContainer.appendChild(div);
-            currentEvent++;
-        } else {
-            clearInterval(interval);
-        }
-    }, 5000);
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
 
-    // ----------------------------
-    // 3️⃣ Simulação de Heatmap
-    // ----------------------------
-    const heatmapContainer = document.createElement('div');
-    heatmapContainer.id = 'heatmapContainer';
-    heatmapContainer.style.width = '100%';
-    heatmapContainer.style.height = '200px';
-    heatmapContainer.style.position = 'relative';
-    heatmapContainer.style.backgroundColor = '#123A5B';
-    heatmapContainer.style.marginTop = '20px';
-    heatmapContainer.style.borderRadius = '10px';
-    document.body.appendChild(heatmapContainer);
+.card {
+    background-color: #123A5B;
+    padding: 15px;
+    border-radius: 10px;
+}
 
-    // Jogadores simulados
-    const players = [
-        { name: 'Jogador 1', x: 20, y: 50 },
-        { name: 'Jogador 2', x: 50, y: 80 },
-        { name: 'Jogador 3', x: 80, y: 40 },
-        { name: 'Jogador 4', x: 30, y: 20 },
-        { name: 'Jogador 5', x: 60, y: 60 }
-    ];
+#heatmapContainer {
+    width: 100%;
+    height: 200px;
+    background-color: #123A5B;
+    border-radius: 10px;
+    position: relative;
+}
 
-    players.forEach(player => {
-        const dot = document.createElement('div');
-        dot.style.width = '15px';
-        dot.style.height = '15px';
-        dot.style.backgroundColor = '#FFA500';
-        dot.style.borderRadius = '50%';
-        dot.style.position = 'absolute';
-        dot.style.left = player.x + '%';
-        dot.style.top = player.y + '%';
-        dot.title = player.name;
-        heatmapContainer.appendChild(dot);
-    });
+#eventContainer .card {
+    background-color: #FFA500;
+    color: #0A1F44;
+    margin-bottom: 10px;
+}
 
-    // ----------------------------
-    // 4️⃣ Estatísticas rápidas simuladas
-    // ----------------------------
-    const statsContainer = document.createElement('div');
-    statsContainer.id = 'statsContainer';
-    statsContainer.style.marginTop = '20px';
-    statsContainer.style.display = 'flex';
-    statsContainer.style.justifyContent = 'space-around';
-    document.body.appendChild(statsContainer);
+#statsContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
 
-    const stats = [
-        { name: 'Chutes', value: 12 },
-        { name: 'Escanteios', value: 5 },
-        { name: 'Faltas', value: 3 },
-        { name: 'Posse de bola', value: '57%' },
-        { name: 'Cartões', value: 1 }
-    ];
-
-    stats.forEach(stat => {
-        const div = document.createElement('div');
-        div.className = 'card';
-        div.style.padding = '10px';
-        div.style.width = '120px';
-        div.style.textAlign = 'center';
-        div.innerHTML = `<strong>${stat.value}</strong><br>${stat.name}`;
-        statsContainer.appendChild(div);
-    });
-};
+#statsContainer .card {
+    padding: 10px;
+    width: 120px;
+    text-align: center;
+}
