@@ -1,67 +1,90 @@
-// ===============================
-// FOOTLIVE ANALYTICS - FASE 2
-// ===============================
-
-let events = [];
-
-// Simulação de tempo (até integrarmos a API do YouTube)
-function getCurrentVideoTime() {
-    const now = new Date();
-    return `${now.getMinutes()}:${String(now.getSeconds()).padStart(2, '0')}`;
+/* RESET BÁSICO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-// Captura cliques dos botões
-document.addEventListener("click", function (e) {
-    if (e.target.tagName === "BUTTON" && e.target.dataset.event) {
-        const eventType = e.target.dataset.event;
-        const team = e.target.dataset.team;
-        const time = getCurrentVideoTime();
-
-        const eventData = {
-            team,
-            eventType,
-            time
-        };
-
-        events.push(eventData);
-        renderEvent(eventData);
-    }
-});
-
-// Renderiza evento na tela
-function renderEvent(event) {
-    let container = document.getElementById("eventContainer");
-
-    if (!container) {
-        container = document.createElement("div");
-        container.id = "eventContainer";
-        container.className = "container";
-        document.body.appendChild(container);
-    }
-
-    const div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `
-        ⏱ ${event.time} — 
-        <strong>Time ${event.team}</strong> :
-        ${formatEventName(event.eventType)}
-    `;
-
-    container.prepend(div);
+/* BODY */
+body {
+  background: #f4f6f8;
+  color: #222;
 }
 
-// Tradução amigável dos eventos
-function formatEventName(type) {
-    const map = {
-        goal: "Gol",
-        shot: "Finalização",
-        foul: "Falta",
-        yellow: "Cartão Amarelo",
-        red: "Cartão Vermelho",
-        corner: "Escanteio",
-        cross: "Cruzamento",
-        set_piece_corner: "Jogada Ensaiada (Escanteio)",
-        goal_kick: "Tiro de Meta"
-    };
-    return map[type] || type;
+/* HEADER */
+header {
+  background: #111;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+}
+
+header p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* CONTAINER */
+.container {
+  padding: 16px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* DASHBOARD */
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* CONTROLES */
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.controls button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* TIME A */
+.time-a {
+  border-left: 6px solid #1e90ff;
+}
+
+.time-a button {
+  background: #1e90ff;
+  color: #fff;
+}
+
+/* TIME B */
+.time-b {
+  border-left: 6px solid #ff3b3b;
+}
+
+.time-b button {
+  background: #ff3b3b;
+  color: #fff;
+}
+
+/* BOTÃO ATIVO */
+.controls button:active {
+  transform: scale(0.96);
 }
