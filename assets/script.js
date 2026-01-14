@@ -1,34 +1,45 @@
-// Inicializa gráfico de passes
+// Inicializa tudo quando a página carrega
 window.onload = function() {
+
+    // ----------------------------
+    // 1️⃣ Gráfico de Passes
+    // ----------------------------
     const ctx = document.getElementById('passesChart').getContext('2d');
     const passesChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Jogador 1', 'Jogador 2', 'Jogador 3'],
+            labels: ['Jogador 1', 'Jogador 2', 'Jogador 3', 'Jogador 4', 'Jogador 5'],
             datasets: [{
                 label: 'Passes certos',
-                data: [12, 19, 7],
+                data: [12, 19, 7, 14, 10],
                 backgroundColor: '#FFA500'
             }]
         },
-        options: { responsive: true }
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            }
+        }
     });
 
-    // Simulação de eventos do jogo
+    // ----------------------------
+    // 2️⃣ Simulação de Eventos do Jogo
+    // ----------------------------
     const events = [
         { time: 5, text: "Gol do Jogador 1" },
         { time: 10, text: "Falta no Jogador 2" },
         { time: 15, text: "Escanteio para o Time B" },
-        { time: 20, text: "Cartão amarelo Jogador 3" }
+        { time: 20, text: "Cartão amarelo Jogador 3" },
+        { time: 25, text: "Chute perigoso do Jogador 4" }
     ];
 
     let currentEvent = 0;
     const eventContainer = document.createElement('div');
     eventContainer.id = 'eventContainer';
-    eventContainer.style.marginTop = '20px';
+    eventContainer.style.margin = '20px';
     document.body.appendChild(eventContainer);
 
-    // Função para mostrar eventos de 5 em 5 segundos
     const interval = setInterval(() => {
         if(currentEvent < events.length) {
             const event = events[currentEvent];
@@ -44,4 +55,67 @@ window.onload = function() {
             clearInterval(interval);
         }
     }, 5000);
+
+    // ----------------------------
+    // 3️⃣ Simulação de Heatmap
+    // ----------------------------
+    const heatmapContainer = document.createElement('div');
+    heatmapContainer.id = 'heatmapContainer';
+    heatmapContainer.style.width = '100%';
+    heatmapContainer.style.height = '200px';
+    heatmapContainer.style.position = 'relative';
+    heatmapContainer.style.backgroundColor = '#123A5B';
+    heatmapContainer.style.marginTop = '20px';
+    heatmapContainer.style.borderRadius = '10px';
+    document.body.appendChild(heatmapContainer);
+
+    // Jogadores simulados
+    const players = [
+        { name: 'Jogador 1', x: 20, y: 50 },
+        { name: 'Jogador 2', x: 50, y: 80 },
+        { name: 'Jogador 3', x: 80, y: 40 },
+        { name: 'Jogador 4', x: 30, y: 20 },
+        { name: 'Jogador 5', x: 60, y: 60 }
+    ];
+
+    players.forEach(player => {
+        const dot = document.createElement('div');
+        dot.style.width = '15px';
+        dot.style.height = '15px';
+        dot.style.backgroundColor = '#FFA500';
+        dot.style.borderRadius = '50%';
+        dot.style.position = 'absolute';
+        dot.style.left = player.x + '%';
+        dot.style.top = player.y + '%';
+        dot.title = player.name;
+        heatmapContainer.appendChild(dot);
+    });
+
+    // ----------------------------
+    // 4️⃣ Estatísticas rápidas simuladas
+    // ----------------------------
+    const statsContainer = document.createElement('div');
+    statsContainer.id = 'statsContainer';
+    statsContainer.style.marginTop = '20px';
+    statsContainer.style.display = 'flex';
+    statsContainer.style.justifyContent = 'space-around';
+    document.body.appendChild(statsContainer);
+
+    const stats = [
+        { name: 'Chutes', value: 12 },
+        { name: 'Escanteios', value: 5 },
+        { name: 'Faltas', value: 3 },
+        { name: 'Posse de bola', value: '57%' },
+        { name: 'Cartões', value: 1 }
+    ];
+
+    stats.forEach(stat => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.style.padding = '10px';
+        div.style.width = '120px';
+        div.style.textAlign = 'center';
+        div.innerHTML = `<strong>${stat.value}</strong><br>${stat.name}`;
+        statsContainer.appendChild(div);
+    });
 };
